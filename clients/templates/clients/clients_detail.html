@@ -1,0 +1,29 @@
+{% extends "clients/base.html" %}
+{% block content %}
+
+<div class="row text-center">
+    <div class="col-6 mx-auto p-2">
+        <table class="table table-bordered border-black">
+            <thead>
+                <tr class="table-secondary border-black">
+                    <th scope="col">Email</th>
+                    <th scope="col">Ф.И.О.</th>
+                    <th scope="col">Комментарий</th>
+                    <th scope="col">Кнопки</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ object.email }}</td>
+                    <td>{{ object.full_name }}</td>
+                    <td>{{ object.comment }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'clients:clients_list' %}" role="button">Назад</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
