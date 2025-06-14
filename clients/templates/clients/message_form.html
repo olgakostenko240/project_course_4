@@ -1,0 +1,32 @@
+{% extends "clients/base.html" %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <form class="row" method="post" enctype="multipart/form-data">
+                <div class="card">
+                    {% if object %}
+                    <p class="card-text">Редактирование сообщения</p>
+                    {% else %}
+                    <p class="card-text">Создание сообщения</p>
+                    {% endif %}
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        {% if object %}
+                        Сохранить
+                        {% else %}
+                        Создать
+                        {% endif %}
+                    </button>
+                    <a class="btn btn-primary" href="{% url 'clients:message_list' %}" role="button">Отмена</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
