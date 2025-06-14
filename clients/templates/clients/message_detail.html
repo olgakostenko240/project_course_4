@@ -1,0 +1,27 @@
+{% extends "clients/base.html" %}
+{% block content %}
+
+<div class="row text-center">
+    <div class="col-6 mx-auto p-2">
+        <table class="table table-bordered border-black">
+            <thead>
+                <tr class="table-secondary border-black">
+                    <th scope="col">Тема сообщения</th>
+                    <th scope="col">Тело сообщения</th>
+                    <th scope="col">Кнопки</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ object.topic }}</td>
+                    <td>{{ object.body }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'clients:message_list' %}" role="button">Назад</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
