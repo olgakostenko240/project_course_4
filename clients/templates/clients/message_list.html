@@ -1,0 +1,31 @@
+{% extends "clients/base.html" %}
+{% block content %}
+
+<div class="row text-center">
+    <div class="col-8 mx-auto p-2">
+        <table class="table table-bordered border-black">
+            <thead>
+                <tr class="table-secondary border-black">
+                    <th scope="col">Тема сообщения</th>
+                    <th scope="col">Тело сообщения</th>
+                    <th scope="col">Кнопки</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for messages in object_list %}
+                <tr>
+                    <td>{{ messages.topic }}</td>
+                    <td>{{ messages.body }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'clients:message_detail' messages.pk %}" role="button">Посмотреть</a>
+                        <a class="btn btn-primary" href="{% url 'clients:message_update' messages.pk %}" role="button">Редактировать</a>
+                        <a class="btn btn-primary" href="{% url 'clients:message_delete' messages.pk %}" role="button">Удалить</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
