@@ -1,6 +1,6 @@
 from django.forms import ModelForm, BooleanField
 
-from clients.models import Clients, Message
+from clients.models import Clients, Message, Campaign
 
 
 class StyleFormMixin:
@@ -23,3 +23,9 @@ class MessageForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Message
         fields = "__all__"
+
+
+class CampaignForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = Campaign
+        exclude = ("is_active", "successful_attempts", "unsuccessful_attempts", "sent_messages",)
