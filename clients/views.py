@@ -1,8 +1,7 @@
-from django.shortcuts import render
-from clients.models import Clients, Message
+from clients.models import Clients, Message, Campaign
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from clients.forms import ClientsForm, MessageForm
+from clients.forms import ClientsForm, MessageForm, CampaignForm
 
 
 class ClientListView(ListView):
@@ -55,3 +54,28 @@ class MessageUpdateView(UpdateView):
 class MessageDeleteView(DeleteView):
     model = Message
     success_url = reverse_lazy('clients:message_list')
+
+
+class CampaignListView(ListView):
+    model = Campaign
+
+
+class CampaignDetailView(DetailView):
+    model = Campaign
+
+
+class CampaignCreateView(CreateView):
+    model = Campaign
+    form_class = CampaignForm
+    success_url = reverse_lazy('clients:campaign_list')
+
+
+class CampaignUpdateView(UpdateView):
+    model = Campaign
+    form_class = CampaignForm
+    success_url = reverse_lazy('clients:campaign_list')
+
+
+class CampaignDeleteView(DeleteView):
+    model = Campaign
+    success_url = reverse_lazy('clients:campaign_list')
