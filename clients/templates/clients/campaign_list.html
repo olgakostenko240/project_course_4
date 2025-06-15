@@ -1,0 +1,39 @@
+{% extends "clients/base.html" %}
+{% block content %}
+
+<div class="row text-center">
+    <div class="col-12 mx-auto p-2">
+        <table class="table table-bordered border-black">
+            <thead>
+                <tr class="table-secondary border-black">
+                    <th scope="col">Дата первой отправки</th>
+                    <th scope="col">Дата окончания отправки</th>
+                    <th scope="col">Статус</th>
+                    <th scope="col">Тема сообщения</th>
+                    <th scope="col">Сообщение</th>
+                    <th scope="col">Получатели</th>
+                    <th scope="col">Кнопки</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for campaigns in object_list %}
+                <tr>
+                    <td>{{ campaigns.first_sent_time }}</td>
+                    <td>{{ campaigns.end_time }}</td>
+                    <td>{{ campaigns.status }}</td>
+                    <td>{{ campaigns.message.topic }}</td>
+                    <td>{{ campaigns.message.body }}</td>
+                    <td>{{ campaigns.recipients.all }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'clients:campaign_detail' campaigns.pk %}" role="button">Посмотреть</a>
+                        <a class="btn btn-primary" href="{% url 'clients:campaign_update' campaigns.pk %}" role="button">Редактировать</a>
+                        <a class="btn btn-primary" href="{% url 'clients:campaign_delete' campaigns.pk %}" role="button">Удалить</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
