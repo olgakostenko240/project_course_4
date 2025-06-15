@@ -1,7 +1,8 @@
 from django.urls import path
 from clients.apps import ClientsConfig
 from clients.views import (ClientListView, ClientDetailView, ClientCreateView, ClientUpdateView, ClientDeleteView,
-                           MessageListView, MessageDetailView, MessageCreateView, MessageUpdateView, MessageDeleteView)
+                           MessageListView, MessageDetailView, MessageCreateView, MessageUpdateView, MessageDeleteView,
+                           CampaignListView, CampaignDetailView, CampaignCreateView, CampaignUpdateView, CampaignDeleteView)
 
 app_name = ClientsConfig.name
 
@@ -16,5 +17,11 @@ urlpatterns = [
     path("message/<int:pk>/", MessageDetailView.as_view(), name="message_detail"),
     path("message/create/", MessageCreateView.as_view(), name="message_create"),
     path("message/<int:pk>/update/", MessageUpdateView.as_view(), name="message_update"),
-    path("message/<int:pk>/delete/", MessageDeleteView.as_view(), name="message_delete")
+    path("message/<int:pk>/delete/", MessageDeleteView.as_view(), name="message_delete"),
+
+    path("campaign/", CampaignListView.as_view(), name="campaign_list"),
+    path("campaign/<int:pk>/", CampaignDetailView.as_view(), name="campaign_detail"),
+    path("campaign/create/", CampaignCreateView.as_view(), name="campaign_create"),
+    path("campaign/<int:pk>/update/", CampaignUpdateView.as_view(), name="campaign_update"),
+    path("campaign/<int:pk>/delete/", CampaignDeleteView.as_view(), name="campaign_delete")
 ]
